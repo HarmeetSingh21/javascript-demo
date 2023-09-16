@@ -72,15 +72,6 @@ const loadInitialData = () => {
 
  if(localStorageCopy) state.taskList = localStorageCopy.tasks;
 
-//  <!-- beforebegin -->
-// <p>
-//   <!-- afterbegin -->
-//   foo
-//   <!-- beforeend -->
-// </p>
-// <!-- afterend -->
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-
 
  state.taskList.map((cardDate) => {
     taskContents.insertAdjacentHTML("beforeend", htmlTaskContent(cardDate));
@@ -109,8 +100,6 @@ const handleSubmit = () =>{
 }
 
 
-// Default img
-// https://tse3.mm.bing.net/th?id=OIP.FjLkalx51D8xJcpixUGJywHaE8&pid=Api&P=0&h=180
 
 
 
@@ -174,17 +163,15 @@ const editTask = (e) => {
         parentNode = e.target.parentNode.parentNode.parentNode;
     }
 
-    // Uncomment following 2 lines to know abt childNodes
+    
     taskTitle = parentNode.childNodes;
     console.log(taskTitle);
     
-    // taskTitle = parentNode.childNodes[3].childNodes[3];
+   
     taskDescription = parentNode.childNodes[3].childNodes[5];
     taskType = parentNode.childNodes[3].childNodes[7].childNodes[1];
-    // console.log(taskTitle, taskDescription, taskType);
     submitButton = parentNode.childNodes[5].childNodes[1];
-    // console.log(submitButton);
-
+    
     taskTitle.setAttribute("contenteditable", "true");
     taskDescription.setAttribute("contenteditable", "true");
     taskType.setAttribute("contenteditable", "true");
@@ -202,7 +189,7 @@ const saveEdit = (e) => {
 
     const targetID = e.target.id;
     const parentNode = e.target.parentNode.parentNode;
-    // console.log(parentNode);
+    
 
    const taskTitle = parentNode.childNodes[3].childNodes[3];
    const taskDescription =  parentNode.childNodes[3].childNodes[5];
@@ -214,9 +201,9 @@ const saveEdit = (e) => {
         taskDescription: taskDescription.innerHTML,
         taskType: taskType.innerHTML,
     };
-    // console.log(updateData);
+    
 
-    // updating the latest data on our local array
+    
     let stateCopy = state.taskList;
 
    
